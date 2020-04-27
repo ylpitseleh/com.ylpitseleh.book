@@ -12,6 +12,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 /*
+domain 패키지 = 도메인을 담을 페키지. 여기서 도메인이란 게시글, 댓글, 회원, 정산, 결제 등 소프트웨어에 대한 요구사항 혹은 문제 영역이라고 생각하면 됨.
+               기존에 MyBatis와 같은 쿼리 매퍼를 사용했다면 dao 패키지를 떠올리겠지만, dao 패키지와는 조금 결이 다름.
+               그간 xml에 쿼리를 담고, 클래스는 오로지 쿼리의 결과만 담던 일들이 모두 도메인 클래스라고 불리는 곳에서 해결된다.
+ */
+/*
 Posts 클래스 : 실제 DB의 테이블과 매칭될 클래스이며 보통 Entity 클래스라고 한다.
               JPA를 사용하면 DB 데이터에 작업할 경우 실제 쿼리를 날리기 보다는, 이 Entity 클래스의 수정을 통해 작업한다.
 
@@ -43,7 +48,7 @@ public class Posts extends BaseTimeEntity {
 
     private String author;
 
-    /*
+    /* p.93
     Builder : 해당 클래스의 빌더 패턴 클래스를 생성, 생성자 상단에 선언 시 생성자에 포함된 필드만 빌더에 포함.
               생성자 대신에 빌더 클래스를 사용. 빌더는 지금 채워야 할 필드가 무엇인지 명확히 지정할 수 있음. (생성자는 X)
      */
