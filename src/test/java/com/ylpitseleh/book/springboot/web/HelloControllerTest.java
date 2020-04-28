@@ -1,9 +1,12 @@
 package com.ylpitseleh.book.springboot.web;
 
+import com.ylpitseleh.book.springboot.config.auth.SecurityConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -23,7 +26,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
               여기서는 컨트롤러만 사용하기 때문에 선언한다.
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest
+@WebMvcTest(controllers = HelloController.class,
+            excludeFilters = {
+            @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)
+            })
 public class HelloControllerTest {
 
     /*
